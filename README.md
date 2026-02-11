@@ -1,218 +1,119 @@
-# Devrim - LinkedIn Connection Automation Tool
+# Smart Outreach Dashboard
 
-A Python-based tool that automates LinkedIn connection requests based on a CSV file containing target companies, sectors, and roles. Send personalized connection messages to people in your target roles at specific companies.
+A professional tool for managing LinkedIn and email outreach campaigns with intelligent lead tracking, message templates, and analytics.
 
-## Features
+## 🌟 Features
 
-- 📊 **CSV-based input**: Upload a CSV file with company, sector, and target role information
-- 🤖 **Automated connections**: Automatically search and send connection requests on LinkedIn
-- 💬 **Personalized messages**: Send customized messages with each connection request
-- ⚙️ **Configurable**: Customize message templates, connection limits, and delays
-- 🛡️ **Safe**: Built-in rate limiting and session management
-- 📝 **Logging**: Comprehensive logging for tracking operations
+### Data Collection & Enrichment
+- **Multiple Input Methods**: CSV upload, manual entry, and bulk import
+- **Email Finder Integration**: Hunter.io API integration for finding professional emails
+- **Email Pattern Generation**: Auto-generate likely email patterns
+- **Smart Validation**: Email verification and duplicate detection
 
-## Installation
+### Intelligent Dashboard
+- **Modern UI**: Clean, Notion-style interface with dark/light mode
+- **Pipeline View**: Visual prospect management across multiple stages
+- **Prospect Cards**: Rich prospect information with quick actions
+- **Status Tracking**: New → Contacted → Connected → Replied → Qualified
+
+### Message Management
+- **Template Library**: Pre-built templates for LinkedIn and email
+- **Smart Variables**: Dynamic content with merge fields
+- **Character Counter**: LinkedIn message limits tracking
+
+### Analytics & Reporting
+- **Dashboard Metrics**: Total prospects, connection rates, activity stats
+- **Visual Charts**: Activity graphs and pipeline distribution
+- **Daily Tracking**: Monitor your outreach activities with daily limits
+
+## 🚀 Quick Start
 
 ### Prerequisites
+- Python 3.8+
+- Node.js 18+
 
-- Python 3.8 or higher
-- Chrome browser installed
-- LinkedIn account
+### Backend Setup
 
-### Setup
-
-1. Clone the repository:
 ```bash
-git clone https://github.com/ajaiupadhyaya/devrim.git
-cd devrim
-```
-
-2. Install required dependencies:
-```bash
+cd backend
 pip install -r requirements.txt
-```
-
-3. Configure your LinkedIn credentials:
-```bash
 cp .env.example .env
+# Edit .env with your settings
+python main.py
 ```
 
-Edit the `.env` file and add your LinkedIn credentials:
-```
-LINKEDIN_EMAIL=your.email@example.com
-LINKEDIN_PASSWORD=your_password
-```
+API: http://localhost:8000
 
-## Usage
-
-### Quick Start
-
-1. **Create an example CSV file**:
-```bash
-python devrim.py --create-example
-```
-
-This creates `example_companies.csv` with sample data.
-
-2. **Edit the CSV file** with your target companies and roles:
-```csv
-company,sector,target_role
-Google,Technology,Software Engineer
-Microsoft,Technology,Senior Developer
-Amazon,E-commerce,DevOps Engineer
-```
-
-3. **Run the tool**:
-```bash
-python devrim.py example_companies.csv
-```
-
-### CSV File Format
-
-The CSV file must have exactly 3 columns in this order:
-1. **company**: Company name (e.g., "Google", "Microsoft")
-2. **sector**: Industry sector (e.g., "Technology", "Finance")
-3. **target_role**: Job title to target (e.g., "Software Engineer", "Product Manager")
-
-Example:
-```csv
-company,sector,target_role
-Google,Technology,Software Engineer
-Apple,Technology,iOS Developer
-Goldman Sachs,Finance,Investment Analyst
-```
-
-### Command Line Options
+### Frontend Setup
 
 ```bash
-# Basic usage
-python devrim.py companies.csv
-
-# Dry run (validate CSV without sending requests)
-python devrim.py companies.csv --dry-run
-
-# Custom message template
-python devrim.py companies.csv --message "Hi {name}, interested in {company}!"
-
-# Create example CSV
-python devrim.py --create-example
+cd frontend
+npm install
+npm run dev
 ```
 
-### Custom Message Templates
+App: http://localhost:3000
 
-You can customize the connection message in two ways:
-
-1. **Via .env file**:
-```
-MESSAGE_TEMPLATE=Hi {name}, I noticed you work at {company} as a {role}. I'm interested in the {sector} sector and would love to connect!
-```
-
-2. **Via command line**:
-```bash
-python devrim.py companies.csv --message "Hi {name}, I see you're at {company}. Let's connect!"
-```
-
-**Available variables**:
-- `{name}`: Person's name (defaults to "there" in search results)
-- `{company}`: Company name from CSV
-- `{role}`: Target role from CSV
-- `{sector}`: Sector from CSV
-
-**Note**: LinkedIn limits connection notes to 300 characters.
-
-## Configuration
-
-Edit the `.env` file to customize settings:
+### Quick Start with Script
 
 ```bash
-# LinkedIn Credentials
-LINKEDIN_EMAIL=your.email@example.com
-LINKEDIN_PASSWORD=your_password
-
-# Connection Settings
-MAX_CONNECTIONS_PER_SESSION=20  # Max connections per run
-DELAY_BETWEEN_CONNECTIONS=5      # Seconds between requests
-
-# Message Template
-MESSAGE_TEMPLATE=Hi {name}, I noticed you work at {company}...
-
-# Browser Settings
-HEADLESS_MODE=False  # Set to True to hide browser window
+./start.sh
 ```
 
-## Safety Features
+## 📊 CSV Import Format
 
-- **Rate Limiting**: Default limit of 20 connections per session (configurable)
-- **Delays**: Built-in delays between requests to avoid triggering LinkedIn's rate limits
-- **Session Management**: Automatic browser cleanup
-- **Logging**: All actions are logged to `devrim.log`
+| Column | Required | Description |
+|--------|----------|-------------|
+| company | Yes | Company name |
+| name or full_name | Yes | Full name |
+| sector | No | Industry sector |
+| desired_role or position | No | Job title |
+| email | No | Email address |
+| linkedin_url | No | LinkedIn URL |
 
-## Best Practices
+See `sample_prospects.csv` for an example.
 
-1. **Start Small**: Test with a small CSV file (5-10 entries) first
-2. **Reasonable Limits**: Keep MAX_CONNECTIONS_PER_SESSION low (10-20)
-3. **Personalize Messages**: Customize your message template for better response rates
-4. **Respect Rate Limits**: Don't run the tool too frequently
-5. **Monitor Logs**: Check `devrim.log` for any issues
+## 🛠️ Tech Stack
 
-## Troubleshooting
+**Backend**: FastAPI, SQLAlchemy, JWT, Pydantic  
+**Frontend**: React 18, TypeScript, TailwindCSS, React Query, Recharts
 
-### Login Issues
-- Verify your credentials in the `.env` file
-- If using 2FA, you may need to handle the verification manually
-- LinkedIn may require CAPTCHA verification on first login
+## 📝 API Documentation
 
-### Connection Request Issues
-- LinkedIn may limit your connection requests if you exceed daily limits
-- Some users may have restricted connection settings
-- Try increasing `DELAY_BETWEEN_CONNECTIONS` if requests are failing
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
 
-### Browser Issues
-- Ensure Chrome browser is installed
-- Try setting `HEADLESS_MODE=False` to see what's happening
-- Check `devrim.log` for detailed error messages
+## 🎨 Features Overview
 
-## Project Structure
+### MVP Features ✅
+- Prospect database with CSV import
+- Email finder integration (Hunter.io)
+- Message templates with variables
+- Pipeline view with status management
+- Quick actions (copy message, open LinkedIn)
+- Basic analytics and metrics
+- Activity tracking with daily limits
+- Dark/Light mode toggle
+- Authentication system
 
+### Future Enhancements
+- Chrome extension for LinkedIn
+- AI message generation (Anthropic API)
+- Email sending integration (Gmail API)
+- Advanced analytics and reporting
+- Team collaboration features
+- Email sequence automation
+
+## 🐳 Docker Deployment
+
+```bash
+docker-compose up -d
 ```
-devrim/
-├── devrim.py              # Main application
-├── linkedin_connector.py  # LinkedIn automation logic
-├── csv_parser.py          # CSV parsing and validation
-├── config.py              # Configuration management
-├── requirements.txt       # Python dependencies
-├── .env.example          # Example environment configuration
-├── .gitignore            # Git ignore rules
-├── example_companies.csv # Example CSV file
-└── README.md             # This file
-```
 
-## Security Notes
+## ⚠️ Disclaimer
 
-- **Never commit** your `.env` file with real credentials
-- Use environment variables for sensitive data
-- The `.gitignore` file is configured to exclude `.env` files
-- LinkedIn credentials are only used locally and never transmitted to third parties
+Use responsibly and respect LinkedIn's Terms of Service.
 
-## Limitations
+---
 
-- LinkedIn may change their UI, which could break automation
-- Daily connection request limits apply (LinkedIn's policy)
-- Not all connection requests will include a note (depends on relationship)
-- CAPTCHA or security checks may require manual intervention
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is provided as-is for educational and personal use.
-
-## Disclaimer
-
-This tool automates interactions with LinkedIn. Use it responsibly and in accordance with LinkedIn's Terms of Service. Excessive automation may result in account restrictions. The authors are not responsible for any consequences of using this tool.
-
-## Support
-
-For issues and questions, please open an issue on GitHub.
+Built with ❤️ for professional outreach and networking
