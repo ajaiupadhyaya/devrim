@@ -53,6 +53,18 @@ htmlcov/
 # Logs
 *.log
 
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Node modules
+node_modules/
+
+# Build outputs
+dist/
+build/
+
 # OS
 .DS_Store
 Thumbs.db
