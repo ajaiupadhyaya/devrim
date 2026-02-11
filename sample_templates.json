@@ -1,0 +1,42 @@
+[
+  {
+    "title": "LinkedIn Connection - Professional Interest",
+    "category": "linkedin_connection",
+    "content": "Hi {first_name},\n\nI noticed you work at {company} as a {position}. I'm particularly interested in the {sector} industry and would love to connect.\n\nBest regards,\n{my_name}"
+  },
+  {
+    "title": "LinkedIn Connection - Mutual Interest",
+    "category": "linkedin_connection",
+    "content": "Hi {first_name},\n\nI came across your profile and was impressed by your work at {company}. I'd love to connect and learn more about your experience in {sector}.\n\nLooking forward to connecting!\n{my_name}"
+  },
+  {
+    "title": "LinkedIn Follow-up - After Connection",
+    "category": "linkedin_followup",
+    "content": "Hi {first_name},\n\nThanks for connecting! I saw your experience at {company} and thought it would be great to learn more about your work as a {position}.\n\nWould you be open to a brief chat?\n\nBest,\n{my_name}"
+  },
+  {
+    "title": "Email - Initial Outreach",
+    "category": "email_initial",
+    "content": "Subject: Quick Question About {company}\n\nHi {first_name},\n\nI hope this email finds you well. I came across your profile and was impressed by your work at {company} in the {sector} industry.\n\nI'm reaching out because {custom_note}.\n\nWould you be open to a brief conversation?\n\nBest regards,\n{my_name}\n{my_position}\n{my_company}"
+  },
+  {
+    "title": "Email - Follow-up After No Response",
+    "category": "email_followup",
+    "content": "Subject: Following up on my previous email\n\nHi {first_name},\n\nI wanted to follow up on my previous email about connecting. I understand you're likely busy at {company}.\n\nI'd still love to learn more about your experience as a {position} and discuss potential opportunities for collaboration.\n\nLet me know if you'd like to connect.\n\nBest,\n{my_name}"
+  },
+  {
+    "title": "LinkedIn Connection - Job Opportunity",
+    "category": "linkedin_connection",
+    "content": "Hi {first_name},\n\nI'm reaching out because we have an exciting opportunity that aligns with your experience at {company}. Would you be open to connecting to discuss?\n\nBest,\n{my_name}"
+  },
+  {
+    "title": "LinkedIn Connection - Industry Insights",
+    "category": "linkedin_connection",
+    "content": "Hi {first_name},\n\nI'm researching trends in the {sector} industry and noticed your impressive background at {company}. Would you be open to sharing some insights?\n\nThanks,\n{my_name}"
+  },
+  {
+    "title": "Email - Partnership Proposal",
+    "category": "email_initial",
+    "content": "Subject: Partnership Opportunity with {company}\n\nHi {first_name},\n\nI hope you're doing well. I'm {my_position} at {my_company}, and we've been following {company}'s work in the {sector} space.\n\nI'd love to explore potential partnership opportunities that could benefit both our organizations.\n\nWould you be available for a quick call next week?\n\nBest regards,\n{my_name}"
+  }
+]
