@@ -144,15 +144,15 @@ const Templates = () => {
           Available Variables
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm text-blue-800 dark:text-blue-300">
-          <span>{'{ first_name }'}</span>
-          <span>{'{ last_name }'}</span>
-          <span>{'{ full_name }'}</span>
-          <span>{'{ company }'}</span>
-          <span>{'{ position }'}</span>
-          <span>{'{ sector }'}</span>
-          <span>{'{ my_name }'}</span>
-          <span>{'{ my_company }'}</span>
-          <span>{'{ custom_note }'}</span>
+          <span>{'{first_name}'}</span>
+          <span>{'{last_name}'}</span>
+          <span>{'{full_name}'}</span>
+          <span>{'{company}'}</span>
+          <span>{'{position}'}</span>
+          <span>{'{sector}'}</span>
+          <span>{'{my_name}'}</span>
+          <span>{'{my_company}'}</span>
+          <span>{'{custom_note}'}</span>
         </div>
       </div>
     </div>

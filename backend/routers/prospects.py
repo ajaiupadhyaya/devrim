@@ -247,7 +247,7 @@ async def import_csv(
                 user_id=current_user.id,
                 company_id=company.id,
                 full_name=full_name,
-                position=row.get('desired_role', row.get('position', '')).strip(),
+                position=row.get('position', row.get('desired_role', '')).strip(),
                 sector=row.get('sector', '').strip(),
                 email=row.get('email', '').strip() if row.get('email') else None,
                 linkedin_url=row.get('linkedin_url', '').strip() if row.get('linkedin_url') else None,

@@ -39,6 +39,15 @@ echo "🔧 Starting backend server..."
 python main.py &
 BACKEND_PID=$!
 
+# Wait for backend to start
+echo "⏳ Waiting for backend to start..."
+sleep 3
+if curl -s http://localhost:8000/health > /dev/null 2>&1; then
+    echo "✅ Backend started successfully"
+else
+    echo "⚠️  Backend may still be starting..."
+fi
+
 cd ..
 
 echo "📦 Setting up frontend..."

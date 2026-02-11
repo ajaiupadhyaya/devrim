@@ -87,7 +87,7 @@ const ImportCSVModal = ({ onClose }: ImportCSVModalProps) => {
               <li><strong>company</strong> - Company name (required)</li>
               <li><strong>name or full_name</strong> - Full name (required)</li>
               <li><strong>sector</strong> - Industry sector (optional)</li>
-              <li><strong>desired_role or position</strong> - Job title (optional)</li>
+              <li><strong>position or desired_role</strong> - Job title (optional, 'position' preferred)</li>
               <li><strong>email</strong> - Email address (optional)</li>
               <li><strong>linkedin_url</strong> - LinkedIn profile URL (optional)</li>
             </ul>
