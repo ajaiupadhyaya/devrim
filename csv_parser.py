@@ -29,6 +29,17 @@ def validate_csv_structure(df: pd.DataFrame) -> None:
             f"CSV must have at least 3 columns. Found {df.shape[1]} columns."
         )
     
+    # Check if first 3 columns match expected names (case-insensitive)
+    first_three = [col.lower().strip() for col in df.columns[:3]]
+    expected_lower = [col.lower() for col in required_columns]
+    
+    if first_three != expected_lower:
+        logger.warning(
+            f"Column headers don't match expected format. "
+            f"Expected: {required_columns}, Found: {list(df.columns[:3])}. "
+            f"Assuming first 3 columns are company, sector, and target_role."
+        )
+    
     # Rename columns to standard names (first 3 columns)
     df.columns = ['company', 'sector', 'target_role'] + list(df.columns[3:])
     

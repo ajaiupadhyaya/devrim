@@ -2,7 +2,7 @@
 
 import time
 import logging
-from typing import Dict, Optional
+from typing import Dict, Optional, Any
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -142,7 +142,7 @@ class LinkedInConnector:
         self, 
         target_data: Dict[str, str],
         message_template: str = None
-    ) -> Dict[str, any]:
+    ) -> Dict[str, Any]:
         """
         Send connection request with personalized message.
         
@@ -195,8 +195,10 @@ class LinkedInConnector:
                 
                 # Prepare message
                 template = message_template or config.DEFAULT_MESSAGE_TEMPLATE
+                # Use empty name if template doesn't contain {name} variable
+                name_value = "" if "{name}" not in template else "there"
                 message = template.format(
-                    name="there",  # LinkedIn doesn't always show names in search
+                    name=name_value,
                     company=target_data['company'],
                     role=target_data['target_role'],
                     sector=target_data['sector']

@@ -1,4 +1,4 @@
-"""Main application for LinkedIn CSV connection tool."""
+"""Main application for LinkedIn connection automation tool."""
 
 import argparse
 import logging
