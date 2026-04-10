@@ -1,6 +1,5 @@
-import { Prospect } from '@/types'
-import { ExternalLink, Mail, Copy, Trash2, Edit, Check } from 'lucide-react'
-import { useState } from 'react'
+import { Prospect, ProspectStatus } from '@/types'
+import { ExternalLink, Mail, Copy, Trash2, Check } from 'lucide-react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { prospectsService } from '@/services/prospects'
 import toast from 'react-hot-toast'
@@ -11,10 +10,9 @@ interface ProspectCardProps {
 
 const ProspectCard = ({ prospect }: ProspectCardProps) => {
   const queryClient = useQueryClient()
-  const [isEditing, setIsEditing] = useState(false)
 
   const updateMutation = useMutation({
-    mutationFn: (data: { status: string }) => prospectsService.update(prospect.id, data),
+    mutationFn: (data: { status: ProspectStatus }) => prospectsService.update(prospect.id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['prospects'] })
       toast.success('Prospect updated')
@@ -46,7 +44,7 @@ const ProspectCard = ({ prospect }: ProspectCardProps) => {
   }
 
   const handleStatusChange = (newStatus: string) => {
-    updateMutation.mutate({ status: newStatus })
+    updateMutation.mutate({ status: newStatus as ProspectStatus })
   }
 
   const handleDelete = () => {

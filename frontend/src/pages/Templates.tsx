@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { templatesService } from '@/services/templates'
-import { Plus, Edit, Trash2, Copy } from 'lucide-react'
+import { Plus, Trash2, Copy } from 'lucide-react'
 import toast from 'react-hot-toast'
+import CreateTemplateModal from '@/components/templates/CreateTemplateModal'
 
 const Templates = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
@@ -155,6 +156,9 @@ const Templates = () => {
           <span>{'{custom_note}'}</span>
         </div>
       </div>
+
+      {/* Modal */}
+      {showAddModal && <CreateTemplateModal onClose={() => setShowAddModal(false)} />}
     </div>
   )
 }

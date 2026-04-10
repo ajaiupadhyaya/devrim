@@ -1,18 +1,16 @@
 import { useState } from 'react'
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { prospectsService } from '@/services/prospects'
 import { Plus, Upload, Search } from 'lucide-react'
 import ProspectCard from '@/components/prospects/ProspectCard'
 import AddProspectModal from '@/components/prospects/AddProspectModal'
 import ImportCSVModal from '@/components/prospects/ImportCSVModal'
-import toast from 'react-hot-toast'
 
 const Prospects = () => {
   const [selectedStatus, setSelectedStatus] = useState<string>('all')
   const [searchTerm, setSearchTerm] = useState('')
   const [showAddModal, setShowAddModal] = useState(false)
   const [showImportModal, setShowImportModal] = useState(false)
-  const queryClient = useQueryClient()
 
   const { data: prospects, isLoading } = useQuery({
     queryKey: ['prospects', selectedStatus],
